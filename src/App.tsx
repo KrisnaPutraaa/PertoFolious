@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,6 +11,12 @@ import Footer from './components/Footer'
 
 // App = halaman utama. Urutan komponen di sini = urutan section di website.
 export default function App() {
+  // Jika link dibuka dengan #bagian (mis. /#projects), gulir ke bagian itu setelah halaman tampil
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (id) document.getElementById(id)?.scrollIntoView()
+  }, [])
+
   return (
     <div className="grain min-h-screen overflow-x-clip">
       <Navbar />
