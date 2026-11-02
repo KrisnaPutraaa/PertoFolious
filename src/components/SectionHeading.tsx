@@ -1,14 +1,15 @@
 import Reveal from './Reveal'
 
-export default function SectionHeading({ index, label, title }: { index: string; label: string; title: string }) {
+// Pola font: label kecil = font pixel, judul besar = font Apple
+export default function SectionHeading({ label, title, subtitle }: { label: string; title: string; subtitle?: string }) {
   return (
-    <Reveal className="mb-14 md:mb-20">
-      <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-accent uppercase">
-        <span>{index}</span>
-        <span className="h-px w-10 bg-accent/50" />
-        <span>{label}</span>
+    <Reveal className="mb-12 md:mb-16">
+      <p className="mb-4 flex items-center gap-3 font-pixel text-sm tracking-wide text-accent">
+        <span className="h-px w-8 bg-accent/50" />
+        {label}
       </p>
-      <h2 className="font-display font-semibold text-4xl leading-[1.05] tracking-tight md:text-6xl">{title}</h2>
+      <h2 className="font-display text-4xl leading-[1.05] font-semibold tracking-tight md:text-6xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-muted">{subtitle}</p>}
     </Reveal>
   )
 }
