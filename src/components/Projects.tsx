@@ -21,7 +21,7 @@ function ProjectCard({ project, large }: { project: Project; large?: boolean }) 
           <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
         ) : null}
       </div>
-      <h3 className={`mt-8 font-serif leading-tight ${large ? 'text-4xl md:text-5xl' : 'text-3xl'}`}>{project.title}</h3>
+      <h3 className={`mt-8 font-display font-semibold leading-tight tracking-tight ${large ? 'text-4xl md:text-5xl' : 'text-3xl'}`}>{project.title}</h3>
       <p className="mt-1 text-sm text-accent">{project.subtitle}</p>
       <p className="mt-5 leading-relaxed text-muted">{project.description}</p>
       {large && (

@@ -39,7 +39,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
-        <a href="#top" className="font-serif text-2xl italic">
+        <a href="#top" className="font-display font-semibold text-2xl tracking-tight">
           {profile.shortName}
           <span className="text-accent">.</span>
         </a>

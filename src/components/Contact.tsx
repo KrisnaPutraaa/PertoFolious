@@ -19,10 +19,10 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-40">
       <Reveal className="text-center">
         <p className="mb-6 font-mono text-xs tracking-[0.2em] text-accent uppercase">06 — Contact</p>
-        <h2 className="font-serif text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
+        <h2 className="font-display font-semibold text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
           Let’s build something
           <br />
-          <span className="text-muted italic">reliable together.</span>
+          <span className="text-muted">reliable together.</span>
         </h2>
         <p className="mx-auto mt-8 max-w-md text-muted">
           Open to internships, full-time roles and collaborations in software engineering, QA and data.

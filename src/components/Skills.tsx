@@ -12,11 +12,11 @@ export default function Skills() {
 
       {/* Baris teks berjalan */}
       <div className="relative mb-20 overflow-hidden border-y border-line py-6 [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-        <div className="animate-marquee flex w-max gap-10 font-serif text-3xl whitespace-nowrap text-muted italic md:text-4xl">
+        <div className="animate-marquee flex w-max gap-10 font-display font-semibold text-3xl whitespace-nowrap text-muted md:text-4xl tracking-tight">
           {[...all, ...all].map((s, i) => (
             <span key={i} className="flex items-center gap-10">
               {s}
-              <span className="text-accent not-italic">✦</span>
+              <span className="text-accent">✦</span>
             </span>
           ))}
         </div>
