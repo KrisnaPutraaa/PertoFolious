@@ -1,71 +1,58 @@
-import { profile, stats } from '../data/portfolio'
+import { profile } from '../data/portfolio'
+import { useLang } from '../i18n'
+import CaveBackground from './CaveBackground'
 import Reveal from './Reveal'
 
+// Hero selalu gelap (latar gua), jadi warnanya dikunci terang di sini
 export default function Hero() {
-  const [first, ...rest] = profile.name.split(' ')
+  const { t } = useLang()
+  const [first, second, ...rest] = profile.name.split(' ')
   return (
-    <section id="top" className="relative flex min-h-[100svh] items-center pt-24 pb-16">
-      {/* Cahaya lembut di latar belakang */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="animate-float absolute top-[10%] left-[55%] h-[480px] w-[480px] rounded-full bg-[var(--glow)] blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(var(--line)_1px,transparent_1px),linear-gradient(90deg,var(--line)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
-      </div>
-
-      <div className="mx-auto w-full max-w-6xl px-5 md:px-8">
+    <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden text-[#ededf0]">
+      <CaveBackground />
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-24 pb-20 md:px-8">
         <Reveal>
-          <p className="mb-8 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-1.5 text-xs text-muted backdrop-blur">
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-xs text-white/80 backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            Open to opportunities · {profile.location}
+            {t.hero.status}
           </p>
         </Reveal>
 
         <Reveal delay={100}>
-          <h1 className="font-display font-semibold text-[clamp(3rem,10vw,8.5rem)] leading-[0.95] tracking-[-0.045em]">
-            {first}
+          <p className="text-shadow-pixel mt-7 font-pixel text-base text-[#e8c88a]">{t.hero.role}</p>
+          <h1 className="mt-3 font-display text-[clamp(2.4rem,5.2vw,4.25rem)] leading-[1.02] font-semibold tracking-[-0.035em] [text-shadow:0_2px_30px_rgb(0_0_0/0.7)]">
+            {first} {second}
             <br />
-            <span className="text-muted">{rest.join(' ')}</span>
+            <span className="text-[#b4b4bd]">{rest.join(' ')}</span>
           </h1>
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mt-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-            <div className="max-w-xl">
-              <p className="mb-3 font-mono text-sm text-accent">{profile.role}</p>
-              <p className="text-lg leading-relaxed text-muted">{profile.tagline}</p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
-              >
-                View my work
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </a>
-              <a
-                href={`${import.meta.env.BASE_URL}${profile.cvFile}`}
-                download
-                className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm transition-colors hover:bg-surface"
-              >
-                Download CV
-              </a>
-            </div>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#d0d0d7] [text-shadow:0_1px_12px_#000]">{t.hero.tagline}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#e8c88a] px-6 py-3 text-sm font-medium text-[#09090c] transition-transform hover:-translate-y-0.5"
+            >
+              {t.hero.primary}
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL}${profile.cvFile}`}
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-6 py-3 text-sm backdrop-blur transition-colors hover:bg-black/60"
+            >
+              {t.hero.secondary}
+            </a>
           </div>
         </Reveal>
-
-        <Reveal delay={300}>
-          <dl className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
-            {stats.map((s) => (
-              <div key={s.label} className="bg-bg p-6">
-                <dt className="text-sm text-muted">{s.label}</dt>
-                <dd className="mt-1 font-display font-semibold text-4xl tracking-tight">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
       </div>
+      <a href="#about" className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 font-pixel text-xs tracking-[0.2em] text-white/70 uppercase">
+        {t.hero.scroll} ↓
+      </a>
     </section>
   )
 }

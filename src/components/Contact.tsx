@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { profile } from '../data/portfolio'
+import { useLang } from '../i18n'
 import Reveal from './Reveal'
 
 export default function Contact() {
+  const { t } = useLang()
   const [copied, setCopied] = useState(false)
 
   const copyEmail = async () => {
@@ -18,21 +20,16 @@ export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-40">
       <Reveal className="text-center">
-        <p className="mb-6 font-mono text-xs tracking-[0.2em] text-accent uppercase">06 — Contact</p>
-        <h2 className="font-display font-semibold text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
-          Let’s build something
+        <p className="mb-6 font-pixel text-sm text-accent">{t.contact.label}</p>
+        <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1] font-semibold tracking-tight">
+          {t.contact.title}
           <br />
-          <span className="text-muted">reliable together.</span>
+          <span className="text-muted">{t.contact.titleMuted}</span>
         </h2>
-        <p className="mx-auto mt-8 max-w-md text-muted">
-          Open to internships, full-time roles and collaborations in software engineering, QA and data.
-        </p>
+        <p className="mx-auto mt-8 max-w-md text-muted">{t.contact.text}</p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href={`mailto:${profile.email}`}
-            className="rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
-          >
-            Send an email
+          <a href={`mailto:${profile.email}`} className="rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5">
+            {t.contact.email}
           </a>
           <a
             href={`https://wa.me/${profile.whatsapp}`}
@@ -45,11 +42,8 @@ export default function Contact() {
             </svg>
             WhatsApp
           </a>
-          <button
-            onClick={copyEmail}
-            className="rounded-full border border-line px-7 py-3.5 font-mono text-sm transition-colors hover:bg-surface"
-          >
-            {copied ? 'Copied ✓' : profile.email}
+          <button onClick={copyEmail} className="rounded-full border border-line px-7 py-3.5 text-sm transition-colors hover:bg-surface">
+            {copied ? t.contact.copied : profile.email}
           </button>
         </div>
       </Reveal>
