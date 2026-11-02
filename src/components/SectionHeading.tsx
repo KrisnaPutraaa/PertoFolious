@@ -8,7 +8,7 @@ export default function SectionHeading({ index, label, title }: { index: string;
         <span className="h-px w-10 bg-accent/50" />
         <span>{label}</span>
       </p>
-      <h2 className="font-serif text-4xl leading-[1.05] tracking-tight md:text-6xl">{title}</h2>
+      <h2 className="font-display font-semibold text-4xl leading-[1.05] tracking-tight md:text-6xl">{title}</h2>
     </Reveal>
   )
 }

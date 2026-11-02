@@ -23,10 +23,10 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h1 className="font-serif text-[clamp(3rem,10vw,8.5rem)] leading-[0.92] tracking-tight">
+          <h1 className="font-display font-semibold text-[clamp(3rem,10vw,8.5rem)] leading-[0.95] tracking-[-0.045em]">
             {first}
             <br />
-            <span className="text-muted italic">{rest.join(' ')}</span>
+            <span className="text-muted">{rest.join(' ')}</span>
           </h1>
         </Reveal>
 
@@ -60,7 +60,7 @@ export default function Hero() {
             {stats.map((s) => (
               <div key={s.label} className="bg-bg p-6">
                 <dt className="text-sm text-muted">{s.label}</dt>
-                <dd className="mt-1 font-serif text-4xl">{s.value}</dd>
+                <dd className="mt-1 font-display font-semibold text-4xl tracking-tight">{s.value}</dd>
               </div>
             ))}
           </dl>

@@ -15,7 +15,7 @@ export default function About() {
         <Reveal delay={150}>
           <div className="rounded-2xl border border-line bg-surface p-7">
             <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Education</p>
-            <p className="mt-4 font-serif text-3xl">{education.school}</p>
+            <p className="mt-4 font-display font-semibold text-3xl tracking-tight">{education.school}</p>
             <p className="mt-2 text-muted">{education.degree}</p>
             <p className="mt-6 inline-block rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
               {education.period}
