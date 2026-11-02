@@ -14,6 +14,9 @@ export default function Footer() {
           <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-text">
             LinkedIn
           </a>
+          <a href={`https://wa.me/${profile.whatsapp}`} target="_blank" rel="noreferrer" className="hover:text-text">
+            WhatsApp
+          </a>
           <a href={`mailto:${profile.email}`} className="hover:text-text">
             Email
           </a>

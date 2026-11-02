@@ -16,6 +16,9 @@ export const profile = {
     'I work hands-on across the whole software development life cycle: functional and non-functional testing, full-stack development with Spring Boot, React and FastAPI, and large-scale data processing with Apache Spark.',
   ],
   email: 'krisnaaa.putra2004@gmail.com',
+  // Nomor WhatsApp format internasional (62 = Indonesia, tanpa 0 di depan)
+  whatsapp: '6287851970064',
+  whatsappDisplay: '+62 878-5197-0064',
   links: {
     github: 'https://github.com/krizpakez-beep',
     linkedin: 'https://linkedin.com/in/krisnaaaputra',

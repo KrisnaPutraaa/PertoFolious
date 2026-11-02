@@ -1,71 +1,94 @@
-# PertoFolious — Portfolio Putu Satya Krisnaputra
+<div align="center">
 
-Website portofolio pribadi, dibangun dengan **React + TypeScript + Tailwind CSS + Vite**,
-dan di-deploy otomatis ke **GitHub Pages**.
+# Putu Satya Krisnaputra
 
-🌐 Live: https://krisnaputraaa.github.io/PertoFolious/
+**Full-Stack Developer & QA Engineer**
+
+Final-year Informatics student at Telkom University · Former Service Quality Assurance Intern at Telkomsel
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-e8c88a?style=for-the-badge)](https://krisnaputraaa.github.io/PertoFolious/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/krisnaaaputra)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/6287851970064)
+[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:krisnaaa.putra2004@gmail.com)
+
+</div>
 
 ---
 
-## 🚀 Menjalankan di komputer sendiri
+## About
 
-Prasyarat: [Node.js](https://nodejs.org) versi 20+ dan Git.
+This repository contains the source code of my personal portfolio website — a fast, responsive single-page application showcasing my experience, projects, research and technical skills.
+
+I work across the software development life cycle: functional and non-functional testing, full-stack development with **Spring Boot**, **React** and **FastAPI**, and large-scale data processing with **Apache Spark**.
+
+## Highlights
+
+- **Experience** — Service Quality Assurance Intern at Telkomsel (2025)
+- **Research** — First author, *Multimodal Cyberbullying Detection on Platform X Using VGG16 Features and Hybrid CNN-BiLSTM with GloVe Feature Expansion* (submitted, 2026)
+- **Projects** — Crypto RSI Heatmap, Cardiovascular Risk Prediction (Apache Spark), IoT Monitoring Bot, and more
+
+## Tech Stack
+
+| Layer      | Technology                                   |
+| ---------- | -------------------------------------------- |
+| Framework  | React 19, TypeScript                         |
+| Styling    | Tailwind CSS 4                               |
+| Build tool | Vite                                         |
+| CI/CD      | GitHub Actions                               |
+| Hosting    | GitHub Pages                                 |
+
+## Features
+
+- Responsive layout for mobile, tablet and desktop
+- Dark and light theme with saved preference
+- Scroll-triggered reveal animations (respecting reduced-motion settings)
+- Content driven from a single data file for easy updates
+- Automated build and deployment on every push to `main`
+
+## Getting Started
+
+**Prerequisites:** Node.js 20+
 
 ```bash
 git clone https://github.com/KrisnaPutraaa/PertoFolious.git
 cd PertoFolious
-npm install      # pasang semua library (sekali saja)
-npm run dev      # jalankan server lokal → buka http://localhost:5173/PertoFolious/
+npm install
+npm run dev
 ```
 
-Perintah lain:
+The site will be available at `http://localhost:5173/PertoFolious/`.
 
-| Perintah          | Fungsi                                             |
-| ----------------- | -------------------------------------------------- |
-| `npm run dev`     | Mode pengembangan — perubahan langsung terlihat     |
-| `npm run build`   | Membuat versi final (siap online) ke folder `dist/` |
-| `npm run preview` | Melihat hasil build secara lokal                   |
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Start the development server        |
+| `npm run build`   | Build for production into `dist/`   |
+| `npm run preview` | Preview the production build        |
 
-## 📁 Struktur folder
+## Project Structure
 
 ```
-PertoFolious/
-├── index.html                 ← kerangka HTML, font, judul tab
-├── public/                    ← file statis (favicon, cv.pdf)
-├── src/
-│   ├── data/portfolio.ts      ← ⭐ SEMUA ISI WEBSITE (edit di sini!)
-│   ├── components/            ← potongan tampilan (Navbar, Hero, Projects, ...)
-│   ├── App.tsx                ← menyusun urutan section
-│   ├── main.tsx               ← titik awal React
-│   └── index.css              ← warna tema & animasi
-├── vite.config.ts             ← konfigurasi build
-└── .github/workflows/deploy.yml ← deploy otomatis ke GitHub Pages
+├── .github/workflows/   # CI/CD pipeline (GitHub Pages deployment)
+├── public/              # Static assets (favicon, CV)
+└── src/
+    ├── components/      # UI sections (Hero, Projects, Skills, ...)
+    ├── data/            # Portfolio content
+    ├── App.tsx          # Page composition
+    └── index.css        # Theme tokens and animations
 ```
 
-**Mau ganti isi?** Edit `src/data/portfolio.ts` (tambah proyek, ubah teks, dll.).
-**Mau ganti warna?** Edit variabel `--accent`, `--bg`, dst. di `src/index.css`.
+## Contact
 
-## 🌍 Cara membuat website bisa diakses orang (sekali setup)
-
-1. Buka repo di GitHub → **Settings** → **Pages**.
-2. Di **Build and deployment → Source**, pilih **GitHub Actions**.
-3. Merge perubahan ke branch `main`. Tab **Actions** akan menjalankan deploy.
-4. Setelah selesai (±1–2 menit), website online di
-   `https://krisnaputraaa.github.io/PertoFolious/`.
-
-Setiap push ke `main` berikutnya akan otomatis memperbarui website.
+| Channel  | Link                                                                 |
+| -------- | -------------------------------------------------------------------- |
+| Email    | [krisnaaa.putra2004@gmail.com](mailto:krisnaaa.putra2004@gmail.com)  |
+| WhatsApp | [+62 878-5197-0064](https://wa.me/6287851970064)                     |
+| LinkedIn | [linkedin.com/in/krisnaaaputra](https://linkedin.com/in/krisnaaaputra) |
+| GitHub   | [github.com/krizpakez-beep](https://github.com/krizpakez-beep)       |
 
 ---
 
-## 🗺️ Roadmap belajar (Frontend → Backend)
+<div align="center">
 
-Proyek ini sengaja dibuat bertahap supaya bisa sekalian belajar ulang:
+© 2026 Putu Satya Krisnaputra. All rights reserved.
 
-- [x] **Tahap 1 — Frontend dasar**: React component, props, data terpisah, Tailwind CSS.
-- [x] **Tahap 2 — Interaktivitas**: state (`useState`), efek (`useEffect`), tema gelap/terang, animasi scroll.
-- [x] **Tahap 3 — Deploy**: build dengan Vite, CI/CD dengan GitHub Actions, hosting di GitHub Pages.
-- [ ] **Tahap 4 — Backend**: API kecil dengan **FastAPI** (contoh: form kontak yang menyimpan pesan / mengirim notifikasi).
-- [ ] **Tahap 5 — Database**: simpan pesan kontak di database (SQLite/PostgreSQL).
-- [ ] **Tahap 6 — Hubungkan**: frontend memanggil API backend (`fetch`), deploy backend (Render/Railway).
-- [ ] **Tahap 7 — Kualitas**: test dengan Vitest & pytest, dijalankan otomatis di GitHub Actions.
-- [ ] **Bonus**: custom domain (mis. `krisnaputra.dev`), SEO, analytics.
+</div>
