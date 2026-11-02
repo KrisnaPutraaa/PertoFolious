@@ -45,9 +45,14 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
-        <a href="#top" className="font-display text-xl font-semibold tracking-tight">
-          {profile.shortName}
-          <span className="text-accent">.</span>
+        {/* ikon kecil = tombol kembali ke atas (menggantikan teks logo) */}
+        <a
+          href="#top"
+          aria-label={`${profile.name} — ${t.nav.top}`}
+          title={t.nav.top}
+          className="slot grid h-9 w-9 place-items-center transition-transform hover:-translate-y-0.5 hover:rotate-[-8deg]"
+        >
+          <PixelSword size={20} />
         </a>
 
         {/* Menu: font pixel + pedang muncul saat hover */}
