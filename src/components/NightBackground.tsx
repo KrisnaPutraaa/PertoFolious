@@ -129,6 +129,41 @@ function drawHills(
   }
 }
 
+// Tinggi permukaan bukit di kolom c (rumus sama dengan drawHills)
+const topAt = (c: number, B: number, base: number, amp: number, seed: number) =>
+  Math.round((base - (smooth(c * 0.09, seed) * 0.7 + smooth(c * 0.23, seed + 1) * 0.3) * amp) / B) * B
+
+// Blok bercahaya ala "glowstone" (desain sendiri): mozaik kuning-oranye + halo hangat
+function drawGlowBlocks(
+  g: CanvasRenderingContext2D, w: number, B: number, base: number, amp: number, seed: number,
+  treeChance: number, every: number, night: boolean,
+) {
+  const cols = Math.ceil(w / B) + 1
+  for (let c = 1; c < cols; c++) {
+    if (hash(c, seed + 40) > 1 / every || hash(c, seed + 9) < treeChance) continue
+    const top = topAt(c, B, base, amp, seed)
+    // kadang di atas tanah, kadang tertanam di lereng
+    const y = hash(c, seed + 41) > 0.5 ? top - B : top + B
+    const x = c * B, cx = x + B / 2, cy = y + B / 2
+    // halo cahaya hangat
+    const R = B * (night ? 4.5 : 2.5)
+    const halo = g.createRadialGradient(cx, cy, B * 0.3, cx, cy, R)
+    halo.addColorStop(0, `rgba(255,214,120,${night ? 0.5 : 0.25})`)
+    halo.addColorStop(0.35, `rgba(255,170,70,${night ? 0.18 : 0.08})`)
+    halo.addColorStop(1, 'rgba(255,150,50,0)')
+    g.fillStyle = halo
+    g.fillRect(cx - R, cy - R, R * 2, R * 2)
+    // blok: mozaik piksel terang + celah gelap
+    const P = B / 6
+    for (let py = 0; py < 6; py++)
+      for (let px = 0; px < 6; px++) {
+        const n = hash(px * 7 + py * 13 + c * 31, seed + 42)
+        g.fillStyle = n > 0.78 ? '#fff4c2' : n > 0.45 ? '#ffd166' : n > 0.18 ? '#e9a23b' : '#8a5a1e'
+        g.fillRect(x + px * P, y + py * P, P + 0.5, P + 0.5)
+      }
+  }
+}
+
 export default function NightBackground() {
   const rootRef = useRef<HTMLDivElement>(null)
 
@@ -187,6 +222,10 @@ export default function NightBackground() {
           fog(g, H, 0.7, 0.25)
         } else if (L === 'near') {
           drawHills(g, vw, H, 46 * scale, H * 0.92, H * 0.08, 37, pal.near, pal.grassRim, { leaf: pal.leaf, leafRim: pal.leafRim, trunk: pal.trunk, chance: 0.08 }, { color: pal.grass, rim: pal.grassRim })
+        } else if (L === 'glowMid') {
+          drawGlowBlocks(g, vw, 34 * scale, H * 0.76, H * 0.16, 23, 0.12, 16, pal.stars)
+        } else if (L === 'glowNear') {
+          drawGlowBlocks(g, vw, 46 * scale, H * 0.92, H * 0.08, 37, 0.08, 12, pal.stars)
         } else if (L === 'clouds') {
           g.fillStyle = pal.cloud
           const B = 22 * scale
@@ -227,7 +266,7 @@ export default function NightBackground() {
     }
 
     // ---------- parallax saat scroll: makin dekat, makin cepat ----------
-    const SPEED: Record<string, number> = { sky: 0.03, moon: 0.03, rays: 0.04, clouds: 0.06, far: 0.12, mid: 0.2, near: 0.32 }
+    const SPEED: Record<string, number> = { sky: 0.03, moon: 0.03, rays: 0.04, clouds: 0.06, far: 0.12, mid: 0.2, near: 0.32, glowMid: 0.2, glowNear: 0.32 }
     function place() {
       const max = Math.max(1, document.documentElement.scrollHeight - vh)
       const p = Math.min(1, scrollY / max)
@@ -301,14 +340,17 @@ export default function NightBackground() {
   return (
     <div ref={rootRef} aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-0">
       <canvas data-layer="sky" className={layer} />
-      <canvas data-layer="rays" className={`${layer} animate-[rays_8s_ease-in-out_infinite] blur-[6px]`} />
-      <canvas data-layer="clouds" className={`${layer} blur-[3px]`} />
-      <canvas data-layer="far" className={`${layer} blur-[3px]`} />
-      <canvas data-layer="mid" className={`${layer} blur-[1.5px]`} />
-      <canvas data-layer="near" className={layer} />
+      <canvas data-layer="rays" className={`${layer} animate-[rays_8s_ease-in-out_infinite] blur-[10px]`} />
+      <canvas data-layer="clouds" className={`${layer} blur-[6px]`} />
+      <canvas data-layer="far" className={`${layer} blur-[7px]`} />
+      <canvas data-layer="mid" className={`${layer} blur-[4.5px]`} />
+      <canvas data-layer="near" className={`${layer} blur-[3px]`} />
       <canvas data-fx className="absolute inset-0 h-full w-full" />
       {/* lapisan gelap tipis agar teks tetap terbaca, tapi latar tetap terlihat jelas */}
-      <div className="absolute inset-0 bg-bg/35" />
+      <div className="absolute inset-0 bg-bg/45" />
+      {/* cahaya glowstone di atas lapisan gelap supaya tetap hangat & terang */}
+      <canvas data-layer="glowMid" className={`${layer} animate-[glow_5s_ease-in-out_infinite] blur-[5px]`} />
+      <canvas data-layer="glowNear" className={`${layer} animate-[glow_6s_ease-in-out_infinite] blur-[4px]`} />
       {/* bulan di atas lapisan gelap supaya tetap bersinar */}
       <canvas data-layer="moon" className={layer} />
     </div>

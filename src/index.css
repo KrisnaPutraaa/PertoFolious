@@ -124,6 +124,12 @@ input, textarea {
   50% { opacity: 1; }
 }
 
+/* cahaya glowstone berdenyut pelan */
+@keyframes glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.75; }
+}
+
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(30px, -20px); }

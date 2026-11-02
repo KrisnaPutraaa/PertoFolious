@@ -39,7 +39,7 @@ export type Project = {
 }
 
 export type Content = {
-  nav: { about: string; experience: string; projects: string; research: string; skills: string; contact: string; cta: string }
+  nav: { about: string; experience: string; projects: string; research: string; skills: string; contact: string; cta: string; top: string }
   hero: { status: string; role: string; tagline: string; primary: string; secondary: string; scroll: string }
   about: { label: string; title: string; titleMuted: string; paragraphs: string[]; photoHintMouse: string; photoHintTouch: string; photoAlt: string }
   stats: { value: string; label: string }[]
@@ -78,7 +78,7 @@ const paperTitle =
 
 // ======================= ENGLISH =======================
 const en: Content = {
-  nav: { about: 'About', experience: 'Experience', projects: 'Projects', research: 'Research', skills: 'Skills', contact: 'Contact', cta: 'Let’s talk' },
+  nav: { about: 'About', experience: 'Experience', projects: 'Projects', research: 'Research', skills: 'Skills', contact: 'Contact', cta: 'Let’s talk', top: 'Back to top' },
   hero: {
     status: 'Open to opportunities · Indonesia',
     role: 'Full-Stack Developer & QA Engineer',
@@ -191,7 +191,7 @@ const en: Content = {
 
 // ======================= BAHASA INDONESIA =======================
 const id: Content = {
-  nav: { about: 'Tentang', experience: 'Pengalaman', projects: 'Proyek', research: 'Riset', skills: 'Keahlian', contact: 'Kontak', cta: 'Hubungi saya' },
+  nav: { about: 'Tentang', experience: 'Pengalaman', projects: 'Proyek', research: 'Riset', skills: 'Keahlian', contact: 'Kontak', cta: 'Hubungi saya', top: 'Kembali ke atas' },
   hero: {
     status: 'Terbuka untuk peluang · Indonesia',
     role: 'Full-Stack Developer & QA Engineer',
