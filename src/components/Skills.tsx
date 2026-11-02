@@ -14,7 +14,7 @@ export default function Skills() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {s.groups.map((group, i) => (
           <Reveal key={group.name} delay={(i % 3) * 100}>
-            <div className="h-full rounded-2xl border border-line bg-surface p-5">
+            <div className="h-full rounded-2xl border border-line bg-surface/70 backdrop-blur-md p-5">
               <div className="mb-4 flex items-center gap-3">
                 <div className="slot grid h-10 w-10 place-items-center">
                   <PixelIcon name={group.icon} size={22} />
@@ -35,7 +35,7 @@ export default function Skills() {
 
         {/* Sertifikat sebagai "achievement" */}
         <Reveal delay={200} className="md:col-span-2 lg:col-span-1">
-          <div className="h-full rounded-2xl border border-line bg-surface p-5">
+          <div className="h-full rounded-2xl border border-line bg-surface/70 backdrop-blur-md p-5">
             <div className="mb-4 flex items-center gap-3">
               <div className="slot grid h-10 w-10 place-items-center">
                 <PixelIcon name="star" size={22} />

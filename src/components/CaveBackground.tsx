@@ -312,7 +312,7 @@ export default function CaveBackground() {
       <div ref={backRef} className="absolute top-0 left-0 h-full bg-repeat [image-rendering:pixelated] will-change-transform" />
       <canvas ref={canvasRef} className="absolute top-0 left-0 [image-rendering:pixelated] will-change-transform" />
       {/* lapisan gelap supaya teks tetap terbaca */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_22%_55%,rgb(5_5_6/0.74),rgb(5_5_6/0.05)_75%),linear-gradient(180deg,rgb(5_5_6/0.5),transparent_18%,transparent_82%,var(--bg))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_22%_55%,rgb(5_5_6/0.74),rgb(5_5_6/0.05)_75%),linear-gradient(180deg,rgb(5_5_6/0.5),transparent_18%,transparent_85%,rgb(5_5_6/0.55))]" />
     </div>
   )
 }

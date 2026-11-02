@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import NightBackground from './components/NightBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -19,6 +20,7 @@ export default function App() {
 
   return (
     <div className="grain min-h-screen overflow-x-clip">
+      <NightBackground />
       <Navbar />
       <main>
         <Hero />

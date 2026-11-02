@@ -3,12 +3,25 @@ import { useLang } from '../i18n'
 import CaveBackground from './CaveBackground'
 import Reveal from './Reveal'
 
+// Tepi bawah hero dibuat bergerigi per "blok" → terlihat seperti mulut gua
+const caveMouth = (() => {
+  const n = 28, pts: string[] = []
+  // dari kanan ke kiri supaya bentuknya tidak menyilang
+  for (let i = n - 1; i >= 0; i--) {
+    const r = Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1
+    const depth = Math.round((Math.sin(i * 0.55) * 0.5 + 0.5) * 2 + r * 2) * 28 // 0–4 blok
+    const x0 = ((i / n) * 100).toFixed(2), x1 = (((i + 1) / n) * 100).toFixed(2)
+    pts.push(`${x1}% calc(100% - ${depth}px)`, `${x0}% calc(100% - ${depth}px)`)
+  }
+  return `polygon(0 0, 100% 0, ${pts.join(', ')})`
+})()
+
 // Hero selalu gelap (latar gua), jadi warnanya dikunci terang di sini
 export default function Hero() {
   const { t } = useLang()
   const [first, second, ...rest] = profile.name.split(' ')
   return (
-    <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden text-[#ededf0]">
+    <section id="top" style={{ clipPath: caveMouth }} className="relative flex min-h-[100svh] items-center overflow-hidden text-[#ededf0]">
       <CaveBackground />
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-24 pb-20 md:px-8">
         <Reveal>

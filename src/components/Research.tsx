@@ -9,7 +9,7 @@ export default function Research() {
     <section id="research" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
       <SectionHeading label={r.label} title={r.title} />
       <Reveal>
-        <article className="relative overflow-hidden rounded-3xl border border-line bg-surface p-8 md:p-14">
+        <article className="relative overflow-hidden rounded-3xl border border-line bg-surface/70 backdrop-blur-md p-8 md:p-14">
           <span aria-hidden className="absolute top-0 right-8 font-display text-[10rem] leading-none text-accent/10 select-none">
             “
           </span>

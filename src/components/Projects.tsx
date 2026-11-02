@@ -28,7 +28,7 @@ function ProjectCard({ project, large, privateLabel }: { project: Project; large
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface p-7 transition-[transform,border-color] duration-300 ease-out hover:border-accent/40 md:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface/70 backdrop-blur-md p-7 transition-[transform,border-color] duration-300 ease-out hover:border-accent/40 md:p-8"
     >
       {/* cahaya yang mengikuti kursor */}
       <div
