@@ -17,6 +17,7 @@ const ICONS: Record<IconName, string[]> = {
   check: ['..........G.', '.........GG.', '........GG..', '.G.....GG...', '.GG...GG....', '..GG.GG.....', '...GGG......', '....G.......'],
   pickaxe: ['..CCCCCCCC..', '.CCc.ww.cCC.', 'C....ww....C', '.....ww.....', '.....ww.....', '.....ww.....', '.....ww.....', '.....ww.....'],
   star: ['.....Y.....', '....YyY....', 'YYYYYyYYYYY', '.YYYYYYYYY.', '..YYYYYYY..', '..YYY.YYY..', '.YY.....YY.'],
+  cross: ['....RRRR....', '...RRrrRR...', '...RRrrRR...', 'RRRRRrrRRRRR', 'RrrrrrrrrrrR', 'RrrrrrrrrrrR', 'RRRRRrrRRRRR', '...RRrrRR...', '...RRrrRR...', '....RRRR....'],
 }
 
 export default function PixelIcon({ name, size = 24, className = '' }: { name: IconName; size?: number; className?: string }) {

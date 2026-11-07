@@ -23,7 +23,7 @@ export const profile = {
 }
 
 // Ikon pixel yang tersedia (lihat src/components/PixelIcon.tsx)
-export type IconName = 'chart' | 'heart' | 'window' | 'bot' | 'trophy' | 'scroll' | 'database' | 'check' | 'pickaxe' | 'star'
+export type IconName = 'chart' | 'heart' | 'window' | 'bot' | 'trophy' | 'scroll' | 'database' | 'check' | 'pickaxe' | 'star' | 'cross'
 
 export type Project = {
   title: string
@@ -34,6 +34,7 @@ export type Project = {
   highlights: string[]
   tech: string[]
   link?: string
+  github?: string
   private?: boolean
   featured?: boolean
 }
@@ -54,6 +55,7 @@ export type Content = {
 
 // ---------- data yang tidak perlu diterjemahkan ----------
 const tech = {
+  clinic: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase', 'PostgreSQL', 'Vitest'],
   crypto: ['Python', 'FastAPI', 'React', 'TypeScript', 'Tailwind', 'Gemini'],
   cardio: ['PySpark', 'Spark MLlib', 'Pandas', 'Matplotlib'],
   fullstack: ['Java', 'Spring Boot', 'React', 'MySQL'],
@@ -62,9 +64,9 @@ const tech = {
 }
 const skillItems = {
   languages: ['Python', 'Java', 'JavaScript', 'TypeScript', 'Go', 'SQL', 'HTML/CSS'],
-  backend: ['Spring Boot', 'FastAPI', 'Apache Spark', 'Spark MLlib', 'MySQL', 'Pandas'],
-  frontend: ['React.js', 'Tailwind CSS', 'REST API'],
-  tools: ['Git & GitHub', 'Google Colab', 'Jupyter', 'Figma', 'Postman'],
+  backend: ['Next.js', 'Spring Boot', 'FastAPI', 'Supabase', 'PostgreSQL', 'Apache Spark', 'Spark MLlib', 'MySQL', 'Pandas'],
+  frontend: ['React.js', 'Next.js', 'Tailwind CSS', 'REST API'],
+  tools: ['Git & GitHub', 'Google Colab', 'Jupyter', 'Figma', 'Postman', 'Vercel'],
 }
 const certifications = [
   { name: 'IBM Big Data 101', issuer: 'Cognitive Class', year: '2026' },
@@ -100,7 +102,7 @@ const en: Content = {
     photoAlt: 'Photo of Putu Satya Krisnaputra',
   },
   stats: [
-    { value: '5', label: 'Projects built' },
+    { value: '6', label: 'Projects built' },
     { value: '70K', label: 'Records processed' },
     { value: '84.46%', label: 'Paper model accuracy' },
   ],
@@ -128,6 +130,18 @@ const en: Content = {
     privateRepo: 'Private repo',
     items: [
       {
+        title: 'Clinic Booking & Queue System', subtitle: 'Patient queue & clinic booking web app', year: '2026', icon: 'cross', featured: true,
+        link: 'https://antrean-dr-dhena.vercel.app',
+        github: 'https://github.com/KrisnaPutraaa/Sistem_Booking_PraktikDokter',
+        description: 'A full-stack clinic queue and booking platform for dr. Luh Putu Dhena Purwaningsih, Sp.THT-KL with daily queue tokens, multi-role staff management, and bot protection.',
+        highlights: [
+          'Secure patient queue booking via Server Actions with Cloudflare Turnstile verification',
+          'Role-based staff portal (doctor, nurse, owner) with Supabase Auth & PostgreSQL Row Level Security (RLS)',
+          'Dynamic schedule & quota controls with automated Vitest test suite',
+        ],
+        tech: tech.clinic,
+      },
+      {
         title: 'Crypto RSI Heatmap', subtitle: 'Real-time market analysis platform', year: '2026', icon: 'chart', featured: true,
         description: 'A FastAPI + React platform that serves multi-timeframe RSI heatmaps from the Binance API, with a Gemini-powered analysis chatbot.',
         highlights: ['FastAPI REST layer serving RSI data from 15m to 1w', 'Gemini chatbot endpoint with rate-limit handling', 'pytest + Vitest suites running on GitHub Actions CI'],
@@ -135,6 +149,7 @@ const en: Content = {
       },
       {
         title: 'Cardiovascular Risk Prediction', subtitle: 'Big data pipeline', year: '2026', icon: 'heart', featured: true,
+        github: 'https://github.com/krizpakez-beep/Tugas-Besar-BigData-Health-Analysis',
         description: 'An end-to-end Apache Spark pipeline over 70,000 medical records, training a Random Forest classifier to predict cardiovascular risk.',
         highlights: ['Distributed cleaning, feature transformation and training', 'Random Forest classifier in Spark MLlib', 'Feature-importance charts of key clinical risk factors'],
         tech: tech.cardio,
@@ -213,7 +228,7 @@ const id: Content = {
     photoAlt: 'Foto Putu Satya Krisnaputra',
   },
   stats: [
-    { value: '5', label: 'Proyek dibuat' },
+    { value: '6', label: 'Proyek dibuat' },
     { value: '70K', label: 'Data diolah' },
     { value: '84.46%', label: 'Akurasi model paper' },
   ],
@@ -241,6 +256,18 @@ const id: Content = {
     privateRepo: 'Repo privat',
     items: [
       {
+        title: 'Sistem Booking & Antrean Dokter', subtitle: 'Platform antrean pasien & manajemen klinik', year: '2026', icon: 'cross', featured: true,
+        link: 'https://antrean-dr-dhena.vercel.app',
+        github: 'https://github.com/KrisnaPutraaa/Sistem_Booking_PraktikDokter',
+        description: 'Platform antrean dan booking pasien untuk praktik dr. Luh Putu Dhena Purwaningsih, Sp.THT-KL dengan pengambilan nomor tiket harian, manajemen antrean staf multi-role, dan proteksi bot.',
+        highlights: [
+          'Pengambilan antrean pasien via Server Actions dengan verifikasi bot Cloudflare Turnstile',
+          'Portal staf (dokter, perawat, owner) berbasis Supabase Auth & PostgreSQL Row Level Security (RLS)',
+          'Pengaturan kuota & jam praktik dinamis serta pengujian otomatis dengan Vitest',
+        ],
+        tech: tech.clinic,
+      },
+      {
         title: 'Crypto RSI Heatmap', subtitle: 'Platform analisis pasar real-time', year: '2026', icon: 'chart', featured: true,
         description: 'Platform FastAPI + React yang menyajikan heatmap RSI multi-timeframe dari Binance API, dilengkapi chatbot analisis berbasis Gemini.',
         highlights: ['REST API FastAPI untuk data RSI dari 15m hingga 1w', 'Endpoint chatbot Gemini dengan penanganan rate-limit', 'Test pytest + Vitest otomatis di GitHub Actions CI'],
@@ -248,6 +275,7 @@ const id: Content = {
       },
       {
         title: 'Cardiovascular Risk Prediction', subtitle: 'Pipeline big data', year: '2026', icon: 'heart', featured: true,
+        github: 'https://github.com/krizpakez-beep/Tugas-Besar-BigData-Health-Analysis',
         description: 'Pipeline Apache Spark end-to-end atas 70.000 data medis, melatih model Random Forest untuk memprediksi risiko penyakit jantung.',
         highlights: ['Pembersihan, transformasi fitur, dan training terdistribusi', 'Model Random Forest di Spark MLlib', 'Grafik feature importance faktor risiko klinis utama'],
         tech: tech.cardio,

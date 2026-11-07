@@ -42,12 +42,51 @@ function ProjectCard({ project, large, privateLabel }: { project: Project; large
           <PixelIcon name={project.icon} size={30} />
         </div>
         <div className="flex flex-col items-end gap-1.5 font-pixel text-xs text-muted">
-          <span className="rounded-md border border-line px-2 py-0.5">{project.year}</span>
-          {project.private && <span className="rounded-md border border-line px-2 py-0.5">🔒 {privateLabel}</span>}
+          <div className="flex items-center gap-1.5">
+            <span className="rounded-md border border-line px-2 py-0.5">{project.year}</span>
+            {project.private && <span className="rounded-md border border-line px-2 py-0.5">🔒 {privateLabel}</span>}
+          </div>
+          {(project.link || project.github) && (
+            <div className="flex items-center gap-1.5">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-line bg-surface-2 px-2 py-0.5 text-[11px] text-muted transition-colors hover:border-accent/40 hover:text-text"
+                  title="Source Code"
+                >
+                  GitHub ↗
+                </a>
+              )}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-accent/40 bg-accent-soft px-2 py-0.5 text-[11px] text-accent transition-colors hover:border-accent hover:bg-accent/20"
+                  title="Live Demo"
+                >
+                  Live ↗
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
-      <h3 className={`relative mt-6 font-display leading-tight font-semibold tracking-tight ${large ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>
-        {project.title}
+      <h3 className={`relative mt-6 font-display leading-tight font-semibold tracking-tight ${large ? 'text-2xl md:text-3xl' : 'text-2xl'}`}>
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-accent"
+          >
+            {project.title}
+          </a>
+        ) : (
+          project.title
+        )}
       </h3>
       <p className="relative mt-1 text-sm text-accent">{project.subtitle}</p>
       <p className="relative mt-4 leading-relaxed text-muted">{project.description}</p>
@@ -78,7 +117,7 @@ export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
       <SectionHeading label={t.projects.label} title={t.projects.title} subtitle={t.projects.subtitle} />
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.filter((p) => p.featured).map((p, i) => (
           <Reveal key={p.title} delay={i * 100}>
             <ProjectCard project={p} large privateLabel={t.projects.privateRepo} />
